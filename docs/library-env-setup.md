@@ -33,7 +33,7 @@ Define the root DOM and load index.tsx:
 	</head>
 	<body>
 		<div id="root"></div>
-		<script type="module" src="path to index.tsx"></script>
+		<script type="module" src="path-to-index.tsx"></script>
 	</body>
 </html>
 ```
@@ -68,8 +68,8 @@ In yourApp/package.json, set the entry point and build mode to lib:
 In the root package.json, add:
 ```
 "scripts": {
-	"dev:web": "turbo dev --filter=yourAppName",
-	"build:web": "turbo build --filter=yourAppName",
+	"dev:web": "turbo dev --filter=your-app-name",
+	"build:web": "turbo build --filter=your-app-name",
 },
 ```
 
