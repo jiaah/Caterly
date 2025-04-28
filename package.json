@@ -5,7 +5,9 @@
   "scripts": {
     "build": "turbo build",
     "build:ui": "turbo build --filter=@caterly/ui",
+		"build:web": "turbo build --filter=@caterly/web",
     "dev:admin": "turbo dev --filter=admin",
+		"dev:web": "turbo dev --filter=@caterly/web",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo check-types",

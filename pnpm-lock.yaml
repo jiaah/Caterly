@@ -117,6 +117,9 @@ importers:
       '@caterly/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@caterly/web':
+        specifier: workspace:*
+        version: link:../web
 
   apps/web:
     dependencies:
