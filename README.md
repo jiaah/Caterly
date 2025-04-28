@@ -38,7 +38,7 @@ monorepo/
 │   ├── admin/           # Admin app
 │   ├── client/          # Client app
 ├── packages/            # Reusable shared modules (Global)
-│   ├── ui-kit/          # UI library abstraction layer (Button, Modal, etc.)
+│   ├── ui/          # UI library abstraction layer (Button, Modal, etc.)
 │   ├── hooks/           # Common React hooks
 │   ├── types/           # Global types (API, domain models)
 │   └── utils/           # Common utility functions
