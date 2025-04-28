@@ -10,9 +10,7 @@ export default defineConfig(
     root: '.',
     plugins: [
       react(),
-      tailwindcssVite({
-        config: './tailwind.config.js',
-      }),
+      tailwindcssVite(),
       tsconfigPaths({
         projects: ['./tsconfig.json'],
       }),
