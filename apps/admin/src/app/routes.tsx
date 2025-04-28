@@ -10,22 +10,22 @@ const CateringContractPage = lazy(() => import('../pages/meal/catering-contract'
 const CateringEventPage = lazy(() => import('../pages/meal/catering-event'));
 
 export const routes: RouteObject[] = [
-  {
-    path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: ROUTES.MEALS.ROOT,
-    element: <MealsLayout />,
-    children: [
-      {
-        path: 'catering-contract',
-        element: <CateringContractPage />,
-      },
-      {
-        path: 'catering-event',
-        element: <CateringEventPage />,
-      },
-    ],
-  },
+	{
+		path: '/',
+		element: <HomePage />,
+	},
+	{
+		path: ROUTES.MEALS.ROOT,
+		element: <MealsLayout />,
+		children: [
+			{
+				path: 'catering-contract',
+				element: <CateringContractPage />,
+			},
+			{
+				path: 'catering-event',
+				element: <CateringEventPage />,
+			},
+		],
+	},
 ];
