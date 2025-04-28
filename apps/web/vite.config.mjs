@@ -1,10 +1,9 @@
 import tailwindcssVite from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 import { defineConfig, mergeConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import baseConfig from '../../configs/vite.config';
+import baseConfig from '../../configs/vite.config.mjs';
 
 export default defineConfig(({ mode }) =>{
 	const isLib = mode === 'lib';
@@ -20,7 +19,7 @@ export default defineConfig(({ mode }) =>{
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        '@': './src',
       },
     },
 	};

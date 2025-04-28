@@ -122,7 +122,7 @@ export default [
           pathGroups: [
             { pattern: 'react', group: 'builtin', position: 'before' },
             { pattern: 'react-*', group: 'builtin', position: 'before' },
-            { pattern: '@caterly/ui', group: 'external', position: 'before' },
+            { pattern: '@caterly/*', group: 'external', position: 'before' },
             { pattern: './styles/**/*.css', group: 'external', position: 'after' },
             { pattern: '@/**', group: 'internal', position: 'before' },
           ],
