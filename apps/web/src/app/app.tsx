@@ -1,3 +1,5 @@
-export function App() {
+function App() {
 	return <p>Hello Web</p>;
 }
+
+export { App };
