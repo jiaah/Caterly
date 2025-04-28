@@ -1,19 +1,19 @@
 {
-  "name": "admin",
+  "name": "@caterly/web",
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "main": "src/app/index.tsx",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --mode lib",
     "preview": "vite preview",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@caterly/ui": "workspace:*",
-		"@caterly/web": "workspace:*"
+    "@caterly/ui": "workspace:*"
   },
   "devDependencies": {}
 }
