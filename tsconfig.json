@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // 모듈 해석
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "module": "ESNext",
+    "lib": ["ES2015", "DOM"],
+
+    "baseUrl": ".",
+
+    // 타입 체크
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+
+    // React
+    "jsx": "react-jsx",
+    "types": ["react", "react-dom"],
+
+    // 빌드
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    // 기타 최적화
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["apps/**/*", "packages/**/*"],
+  "exclude": ["node_modules", "**/build", "**/dist", "public"]
+}

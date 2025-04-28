@@ -1,0 +1,6 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": ["caterly", "turbo", "pnpm", "supabase", "shadcn", "vercel", "vite", "Turborepo"],
+  "ignorePaths": ["node_modules/**", "*-dist/**", ".turbo/**"]
+}
