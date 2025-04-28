@@ -1,5 +1,6 @@
 import tailwindcssVite from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 import { defineConfig, mergeConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -19,7 +20,7 @@ export default defineConfig(({ mode }) =>{
     ],
     resolve: {
       alias: {
-        '@': './src',
+        '@': path.resolve(__dirname, './src'),
       },
     },
 	};
@@ -36,7 +37,7 @@ export default defineConfig(({ mode }) =>{
       outDir: 'dist',
       cssCodeSplit: true,
       rollupOptions: {
-        external: ['react', 'react-dom', 'react/jsx-runtime'],
+        external: ['react', 'react-dom'],
         output: {
           globals: {
             react: 'React',
