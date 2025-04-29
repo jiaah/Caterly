@@ -6,7 +6,7 @@ export default function HomePage() {
 		<div className="text bg-slate-900 font-bold" style={{ color: 'red', height: '500px' }}>
 			HomePage!!
 			<App />
-			<Button appName="Admin">Click Me</Button>
+			<Button appName="Admin" className="text-yellow">Click Me</Button>
 		</div>
 	);
 }

@@ -4,17 +4,18 @@
   "type": "module",
   "scripts": {
     "build": "turbo build",
+		"dev:ui": "turbo dev --filter=@caterly/ui",
+		"dev:web": "turbo dev --filter=@caterly/web",
+		"dev:admin": "turbo dev --filter=admin",
     "build:ui": "turbo build --filter=@caterly/ui",
     "build:web": "turbo build --filter=@caterly/web",
-    "dev:admin": "turbo dev --filter=admin",
-    "dev:web": "turbo dev --filter=@caterly/web",
+		"build:admin": "turbo build --filter=admin",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo check-types",
     "clean": "turbo clean && rm -rf node_modules && rm -rf packages/ui/dist"
   },
   "dependencies": {
-    "@shadcn/ui": "^0.0.4",
     "@supabase/supabase-js": "^2.49.4",
     "@tailwindcss/vite": "^4.1.4",
     "@vitejs/plugin-react": "^4.2.1",
@@ -48,6 +49,7 @@
     "globals": "^16.0.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss-animate": "^1.0.7",
     "turbo": "^2.5.0",
     "typescript": "^5.4.2"
   },

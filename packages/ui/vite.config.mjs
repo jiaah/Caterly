@@ -5,19 +5,16 @@ import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import baseConfig from '../../configs/vite.config.mjs';
 
-export default defineConfig(
-  mergeConfig(baseConfig, {
-    root: '.',
+export default defineConfig(({ mode }) => {
+	const isLib = mode === 'lib';
+
+	const commonConfig = {
+		root: '.',
     plugins: [
       react(),
       tailwindcssVite(),
       tsconfigPaths({
         projects: ['./tsconfig.json'],
-      }),
-      dts({
-        outputDir: 'dist',
-        insertTypesEntry: true,
-        include: ['./src'],
       }),
     ],
     resolve: {
@@ -25,17 +22,19 @@ export default defineConfig(
         '@': './src',
       },
     },
-    build: {
-      // 라이브러리 설정
+	};
+
+	const libConfig = {
+		...commonConfig,
+		build: {
       lib: {
         entry: './src/index.ts',
-        name: 'ui',
-        formats: ['es'], // 트리쉐이킹 친화적
+        name: '@caterly/web',
+        formats: ['es'],
         fileName: 'index',
       },
       outDir: 'dist',
       cssCodeSplit: true,
-      // 라이브러리 -> 번들 크기 줄이고 소비자 앱에 위임 (필수 설정!)
       rollupOptions: {
         external: ['react', 'react-dom', 'react/jsx-runtime'],
         output: {
@@ -48,5 +47,34 @@ export default defineConfig(
       },
       sourcemap: true,
     },
-  })
-);
+		plugins: [
+      ...commonConfig.plugins,
+      dts({
+        outputDir: 'dist',
+        insertTypesEntry: true,
+        include: ['./src'],
+      }),
+    ],
+	}
+
+	const devConfig = {
+		...commonConfig,
+		server: {
+      port: 5173,
+    },
+    build: {
+      outDir: 'dist',
+			rollupOptions: {
+        input: './src/index.tsx',
+      },
+      sourcemap: true,
+    },
+    publicDir: 'public',
+	}
+
+  return mergeConfig(
+    baseConfig,
+    isLib ? libConfig : devConfig
+  );
+  
+});

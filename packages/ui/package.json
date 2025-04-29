@@ -21,8 +21,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
-    "dev": "vite build --watch",
+		"dev": "vite",
+    "build": "vite build --mode lib",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
