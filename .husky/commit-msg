@@ -1,0 +1,28 @@
+# 커밋 메시지 파일을 확인
+COMMIT_MESSAGE_FILE=$1
+COMMIT_MESSAGE=$(cat "$COMMIT_MESSAGE_FILE")
+
+# 커밋 메시지가 비어 있으면 커스터마이징된 오류 메시지를 출력
+if [ -z "$COMMIT_MESSAGE" ]; then
+  echo "❌ Commit message is empty. Please provide a commit message."
+  exit 1
+fi
+
+# 커밋 메시지 lint 검사
+if ! npx --no-install commitlint --edit "$COMMIT_MESSAGE_FILE"; then
+  echo ""
+  echo "❌ Invalid commit message format!"
+  echo ""
+  echo "💬 Please follow this format:"
+  echo "  - Example 1: 'chore: configure prettier'"
+  echo "  - Example 2: 'feat(web): implement dashboard page'"
+  echo ""
+  echo "🧹 Allowed types: feat, fix, docs, style, refactor, perf, test, chore"
+  echo "📦 Allowed scopes: web, admin, ui (or leave empty for root changes)"
+  echo ""
+  echo "🔎 Rules: Subject must NOT be PascalCase or UPPERCASE."
+  exit 1
+fi
+
+# 커밋 메시지가 유효하면 계속 진행
+npx --no-install commitlint --edit "$COMMIT_MESSAGE_FILE"
