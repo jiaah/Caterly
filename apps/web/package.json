@@ -1,28 +1,28 @@
 {
-  "name": "@caterly/web",
-  "version": "0.0.1",
-  "private": true,
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+	"name": "@caterly/web",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
-  },	
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
 	"files": [
 		"dist"
 	],
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build --mode lib",
-    "preview": "vite preview",
-    "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@caterly/ui": "workspace:*"
-  },
-  "devDependencies": {}
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build --mode lib",
+		"preview": "vite preview",
+		"lint": "eslint . --max-warnings 0",
+		"check-types": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@caterly/ui": "workspace:*"
+	},
+	"devDependencies": {}
 }

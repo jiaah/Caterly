@@ -11,9 +11,26 @@
 		"dev:web": "turbo dev --filter=@caterly/web",
 		"dev:admin": "turbo dev --filter=admin",
 		"lint": "turbo lint",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"lint-staged": "lint-staged",
 		"check-types": "turbo check-types",
-		"clean": "rm -rf node_modules .turbo packages/*/node_modules packages/*/dist packages/*/.turbo apps/*/node_modules apps/*/dist apps/*/.turbo"
+		"clean": "rm -rf node_modules .turbo packages/*/node_modules packages/*/dist packages/*/.turbo apps/*/node_modules apps/*/dist apps/*/.turbo",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"packages/ui/src/*.{ts,tsx,js,jsx}": [
+			"eslint --fix",
+			"prettier --write"
+		],
+		"apps/web/src/**/*.{ts,tsx,js,jsx}": [
+			"eslint --fix",
+			"prettier --write"
+		],
+		"apps/admin/src/**/*.{ts,tsx,js,jsx}": [
+			"eslint --fix",
+			"prettier --write"
+		],
+		"*.md": "prettier --write",
+		"*.json": "prettier --write"
 	},
 	"dependencies": {
 		"@supabase/supabase-js": "^2.49.4",
@@ -24,12 +41,12 @@
 		"tailwindcss": "4.1.4"
 	},
 	"devDependencies": {
+		"@tailwindcss/vite": "^4.1.4",
 		"@types/node": "^22.14.1",
 		"@types/react": "^18.2.64",
 		"@types/react-dom": "^18.2.21",
 		"@typescript-eslint/eslint-plugin": "^8.31.0",
 		"@typescript-eslint/parser": "^8.31.0",
-		"@tailwindcss/vite": "^4.1.4",
 		"@vitejs/plugin-react": "^4.2.1",
 		"eslint": "^9.25.1",
 		"eslint-config-prettier": "^10.1.1",
@@ -44,6 +61,8 @@
 		"eslint-plugin-turbo": "^2.5.0",
 		"eslint-plugin-unicorn": "^51.0.1",
 		"globals": "^16.0.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.5.1",
 		"prettier": "^3.5.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"tailwindcss-animate": "^1.0.7",
