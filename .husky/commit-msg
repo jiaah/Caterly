@@ -1,14 +1,16 @@
-# 커밋 메시지 파일을 확인
+#!/bin/sh
+
+# 커밋 메시지 파일 확인
 COMMIT_MESSAGE_FILE=$1
 COMMIT_MESSAGE=$(cat "$COMMIT_MESSAGE_FILE")
 
-# 커밋 메시지가 비어 있으면 커스터마이징된 오류 메시지를 출력
+# 커밋 메시지가 비어 있으면 에러 출력
 if [ -z "$COMMIT_MESSAGE" ]; then
   echo "❌ Commit message is empty. Please provide a commit message."
   exit 1
 fi
 
-# 커밋 메시지 lint 검사
+# 커밋 메시지 Lint 검사
 if ! npx --no-install commitlint --edit "$COMMIT_MESSAGE_FILE"; then
   echo ""
   echo "❌ Invalid commit message format!"
@@ -24,5 +26,10 @@ if ! npx --no-install commitlint --edit "$COMMIT_MESSAGE_FILE"; then
   exit 1
 fi
 
-# 커밋 메시지가 유효하면 계속 진행
-npx --no-install commitlint --edit "$COMMIT_MESSAGE_FILE"
+# 커밋 메시지 Lint 검사 성공
+echo "✓ Commit message is valid."
+echo "🚀 Proceeding with commit..."
+
+# 커밋 메시지가 유효하면 성공적으로 종료
+exit 0
+
