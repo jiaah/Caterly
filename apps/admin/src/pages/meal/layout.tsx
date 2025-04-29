@@ -6,7 +6,11 @@ export default function MealsLayout() {
 		<>
 			<div className="bg-red-500 h-10 w-10 p-10">Meals Layout</div>
 			<div>
-				<Suspense fallback={<div className="bg-yellow-500 h-10 w-10 p-10">Loading page...</div>}>
+				<Suspense
+					fallback={
+						<div className="bg-yellow-500 h-10 w-10 p-10">Loading page...</div>
+					}
+				>
 					<Outlet />
 				</Suspense>
 			</div>

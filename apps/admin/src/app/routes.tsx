@@ -6,7 +6,9 @@ import MealsLayout from '../pages/meal/layout';
 import { ROUTES } from '../shared/config/routes';
 
 const HomePage = lazy(() => import('../pages/home'));
-const CateringContractPage = lazy(() => import('../pages/meal/catering-contract'));
+const CateringContractPage = lazy(
+	() => import('../pages/meal/catering-contract'),
+);
 const CateringEventPage = lazy(() => import('../pages/meal/catering-event'));
 
 export const routes: RouteObject[] = [

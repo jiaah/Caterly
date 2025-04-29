@@ -1,4 +1,4 @@
-//  개발 모드용 (Vite dev 서버에서 사용)
+// Development mode only (with Vite dev server)
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
