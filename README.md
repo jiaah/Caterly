@@ -4,14 +4,13 @@ It brings together recurring and catering management, meal planning, HR, payroll
 
 ## 🌟 Key Features
 
-| **Version** | **Features**                                                                                                      | **Focus**      |
-| ----------- | ----------------------------------------------------------------------------------------------------------------- | -------------- |
-| **MVP**     | **[Admin]** Integrated Login System <br/>Client & Meal Price Management <br/> Regular & Event Catering Management | **Core**       |
-| **v1.0.0**  | **[Client]** Meal Quantity Registration                                                                           | **Client**     |
-| **v2.0.0**  | **[Admin]** Transaction Statements, Revenue Overview <br/> **[Client]** Transaction Statement Issuance            | **Finance**    |
-| **v3.0.0**  | **[Admin]** Employee Management, Work Hours Tracking, Payroll Management                                          | **HR**         |
-| **v4.0.0**  | **[Admin]** Delivery Management System                                                                            | **Catering**   |
-| **v5.0.0**  | **[Admin]** Operations Settings, Client Notices                                                                   | **Operations** |
+| **Version** | **Features**                                                                                           | **Focus**    |
+| ----------- | ------------------------------------------------------------------------------------------------------ | ------------ |
+| **MVP**     | **[Admin]** Integrated Login System, Client & Catering Management                                      | **Core**     |
+| **v1.0.0**  | **[Client]** Meal Quantity Registration                                                                | **Client**   |
+| **v2.0.0**  | **[Admin]** Transaction Statements, Revenue Overview <br/> **[Client]** Transaction Statement Issuance | **Finance**  |
+| **v3.0.0**  | **[Admin]** Employee Management, Work Hours Tracking, Payroll Management                               | **HR**       |
+| **v4.0.0**  | **[Admin]** Delivery Management System                                                                 | **Catering** |
 
 ## 🛠️ Tech Stack
 
@@ -27,24 +26,29 @@ It brings together recurring and catering management, meal planning, HR, payroll
 | **Hosting**         | **Vercel**      | Free tier, Seamless Git deploys & edge speed deploy             |
 | **Docs**            | **Markdown**    | History management & document safety                            |
 
-## 📁 Monorepo & App Architecture
+## 📁 Monorepo & Architecture
 
-Monorepo Architecture
+### Monorepo Architecture
 
 ```tsx
 monorepo/
-├── apps/                # Standalone apps
-│   ├── web/             # Common UI (no routing)
-│   ├── admin/           # Admin app
+├── apps/
+│   ├── adin/            # Admin app
 │   ├── client/          # Client app
-├── packages/            # Reusable shared modules (Global)
-│   ├── ui/          # UI library abstraction layer (Button, Modal, etc.)
-│   ├── hooks/           # Common React hooks
-│   ├── types/           # Global types (API, domain models)
-│   └── utils/           # Common utility functions
+│   ├── portal/          # Public entry point before login
+├── packages/
+│   ├── ui/              # UI library abstraction layer (e.g.,Button, Modal, etc.)
+│   ├── utils/           # Shared utility functions
+│   ├── types/           # Global TypeScript types (e.g.,domain models)
+│   └── web/           	 # Common features (e.g.,layout, auth, invoice, etc.)
 ```
 
-App Architecture (Feature-Sliced-Design)
+Why Monorepo?
+
+1. Shared resources are centralized for reuse and easier updates.
+2. Unified environment minimizes dependency and compatibility issues.
+
+### Feature-Sliced-Design(FSD) Architecture
 
 ```tsx
 src/
@@ -57,9 +61,14 @@ src/
 
 ```
 
-Package Dependency Overview
+Why Feature-Sliced Design?
 
-<p align="center"><img src="https://github.com/user-attachments/assets/46ae96d8-6fa0-41c2-9951-dbef9d93939e"/></p>
+1. Modular structure simplifies managing complex features.
+2. Scalable design supports versioned feature growth (e.g., MVP → v1.0.0 → v2.0.0).
+
+### Package Dependency Overview
+
+<p align="center"><img src="https://github.com/user-attachments/assets/7b20e728-eab8-4fdd-ba00-610c47d6d7ac"/></p>
 
 ## 🚀 Getting Started
 
