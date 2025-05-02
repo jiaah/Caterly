@@ -18,15 +18,15 @@
 	},
 	"lint-staged": {
 		"packages/ui/src/*.{ts,tsx,js,jsx}": [
-			"eslint --fix",
+			"eslint --config packages/ui/eslint.config.mjs --fix",
 			"prettier --write"
 		],
-		"apps/web/src/**/*.{ts,tsx,js,jsx}": [
-			"eslint --fix",
+		"packages/web/src/**/*.{ts,tsx,js,jsx}": [
+			"eslint --config packages/web/eslint.config.mjs --fix",
 			"prettier --write"
 		],
 		"apps/admin/src/**/*.{ts,tsx,js,jsx}": [
-			"eslint --fix",
+			"eslint --config apps/admin/eslint.config.mjs --fix",
 			"prettier --write"
 		],
 		"*.md": "prettier --write",
@@ -38,6 +38,7 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.22.3",
+		"tailwind-merge": "^3.2.0",
 		"tailwindcss": "4.1.4"
 	},
 	"devDependencies": {
