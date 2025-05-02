@@ -12,7 +12,7 @@ export function Button({ children, className, appName }: ButtonProps) {
 	return (
 		<button
 			type="button"
-			className={clsx('text-tertiary p-2', className)}
+			className={clsx('text-primary p-2', className)}
 			onClick={() => alert('clicked')}
 		>
 			{children} ({appName})

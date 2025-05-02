@@ -1,26 +1,30 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "tasks": {
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["apps/admin/dist/**", "packages/ui/dist/**", "apps/web/dist/**"]
-    },
-    "dev": {
-      "dependsOn": ["build"],
-      "cache": false,
-      "persistent": true,
-      "outputs": []
-    },
-    "lint": {
-      "dependsOn": ["^lint"],
-      "inputs": ["apps/**/src/**", "packages/**/src/**"],
-      "outputs": []
-    },
-    "check-types": {
-      "inputs": ["apps/**/src/**", "packages/**/src/**"],
-      "outputs": []
-    }
-  },
-  "globalDependencies": ["package.json", "tsconfig.json", ".env"]
+	"$schema": "https://turbo.build/schema.json",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"inputs": ["$TURBO_DEFAULT$", ".env*"],
+			"outputs": [
+				"apps/admin/dist/**",
+				"packages/ui/dist/**",
+				"packages/web/dist/**"
+			]
+		},
+		"dev": {
+			"dependsOn": ["build"],
+			"cache": false,
+			"persistent": true,
+			"outputs": []
+		},
+		"lint": {
+			"dependsOn": ["^lint"],
+			"inputs": ["apps/**/src/**", "packages/**/src/**"],
+			"outputs": []
+		},
+		"check-types": {
+			"inputs": ["apps/**/src/**", "packages/**/src/**"],
+			"outputs": []
+		}
+	},
+	"globalDependencies": ["package.json", "tsconfig.json", ".env"]
 }

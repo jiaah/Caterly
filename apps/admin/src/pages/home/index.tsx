@@ -1,5 +1,6 @@
 import { Button } from '@caterly/ui';
-import { App } from '@caterly/web';
+
+import { App } from '../../../../../packages/web/dist';
 
 export default function HomePage() {
 	return (

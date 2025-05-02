@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
 		build: {
 			lib: {
 				entry: './src/index.ts',
-				name: '@caterly/web',
+				name: '@caterly/ui',
 				formats: ['es'],
 				fileName: 'index',
 			},

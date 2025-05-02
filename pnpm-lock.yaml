@@ -131,19 +131,19 @@ importers:
         version: link:../../packages/ui
       '@caterly/web':
         specifier: workspace:*
-        version: link:../web
-
-  apps/web:
-    dependencies:
-      '@caterly/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/web
 
   packages/ui:
     dependencies:
       react:
         specifier: ^18.2.0
         version: 18.3.1
+
+  packages/web:
+    dependencies:
+      '@caterly/ui':
+        specifier: workspace:*
+        version: link:../ui
 
 packages:
 
