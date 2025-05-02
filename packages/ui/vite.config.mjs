@@ -65,7 +65,7 @@ export default defineConfig(({ mode }) => {
 		build: {
 			outDir: 'dist',
 			rollupOptions: {
-				input: './src/index.tsx',
+				input: './src/devIndex.tsx',
 			},
 			sourcemap: true,
 		},

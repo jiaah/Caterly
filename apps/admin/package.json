@@ -13,7 +13,8 @@
 	},
 	"dependencies": {
 		"@caterly/ui": "workspace:*",
-		"@caterly/web": "workspace:*"
+		"@caterly/web": "workspace:*",
+		"@caterly/tailwind-config": "workspace:*"
 	},
 	"devDependencies": {}
 }

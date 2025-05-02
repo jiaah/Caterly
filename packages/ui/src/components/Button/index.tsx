@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { clsx } from 'clsx';
+import { cn } from '../../cn';
 
 interface ButtonProps {
 	readonly children: ReactNode;
@@ -12,7 +12,7 @@ export function Button({ children, className, appName }: ButtonProps) {
 	return (
 		<button
 			type="button"
-			className={clsx('text-primary p-2', className)}
+			className={cn('text-blue-700 p-2', className)}
 			onClick={() => alert('clicked')}
 		>
 			{children} ({appName})

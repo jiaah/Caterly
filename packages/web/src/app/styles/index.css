@@ -1,2 +1,4 @@
 @import 'tailwindcss';
-@import '@caterly/ui/styles.css';
+@import '@caterly/tailwind-config/styles.css';
+
+@source '../../../../packages/ui';

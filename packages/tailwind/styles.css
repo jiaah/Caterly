@@ -1,0 +1,24 @@
+@theme {
+	/* breakpoints */
+	--breakpoint-sm: 480px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 976px;
+
+	/* colors */
+	--color-text: #333; /* Default text color */
+
+	--color-primary: #ee9105; /* Primary color 1 (Bright orange) */
+	--color-secondary: #ed6802; /* Primary color 2 (Dark orange) */
+	--color-tertiary: #e8716f; /* Primary color 3 (Soft red-orange) */
+	--color-accent: #6c757d; /* Accent color (Midtone gray) */
+	--color-link: #ed6802; /* Link color (Same as primary color 2) */
+	--color-bg-light: #f5f5f5; /* Background color (Light gray) */
+	--color-bg-dark: #212529; /* Background color (Dark gray) */
+	--color-shadow: #e0e0e0; /* Shadow and border color (Soft gray) */
+
+	--color-primary-hover: #d97704; /* Primary color hover (Darker orange) */
+	--color-secondary-hover: #d45a01; /* Secondary color hover (Darker dark orange) */
+	--color-tertiary-hover: #e0605a; /* Tertiary color hover (Slightly darker red-orange) */
+	--color-accent-hover: #5a6268; /* Accent color hover (Darker midtone gray) */
+	--color-link-hover: #d45a01; /* Link hover (Same as secondary hover color) */
+}

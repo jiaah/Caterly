@@ -1,3 +1,9 @@
+/* Tailwind CSS 기본 스타일 포함 */
 @import 'tailwindcss';
-@import '@caterly/ui/styles.css';
-@import '@caterly/web/styles.css';
+
+/* @import로 공유된 Tailwind 구성 스타일을 번들에 포함 */
+@import '@caterly/tailwind-config/styles.css';
+
+/* @source로 외부 패키지의 클래스 추출용 경로만 등록 (실제 CSS는 번들에 포함되지 않음) */
+@source '../../../../../packages/ui';
+@source '../../../../../packages/web';

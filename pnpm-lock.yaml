@@ -23,6 +23,9 @@ importers:
       react-router-dom:
         specifier: ^6.22.3
         version: 6.30.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      tailwind-merge:
+        specifier: ^3.2.0
+        version: 3.2.0
       tailwindcss:
         specifier: 4.1.4
         version: 4.1.4
@@ -126,6 +129,9 @@ importers:
 
   apps/admin:
     dependencies:
+      '@caterly/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind
       '@caterly/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -133,14 +139,22 @@ importers:
         specifier: workspace:*
         version: link:../../packages/web
 
+  packages/tailwind: {}
+
   packages/ui:
     dependencies:
+      '@caterly/tailwind-config':
+        specifier: workspace:*
+        version: link:../tailwind
       react:
         specifier: ^18.2.0
         version: 18.3.1
 
   packages/web:
     dependencies:
+      '@caterly/tailwind-config':
+        specifier: workspace:*
+        version: link:../tailwind
       '@caterly/ui':
         specifier: workspace:*
         version: link:../ui
@@ -2815,6 +2829,9 @@ packages:
   synckit@0.11.4:
     resolution: {integrity: sha512-Q/XQKRaJiLiFIBNN+mndW7S/RHxvwzuZS6ZwmRzUBqJBv/5QIKCEwkBC8GBf8EQJKYnaFs0wOZbKTXBPj8L9oQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
+
+  tailwind-merge@3.2.0:
+    resolution: {integrity: sha512-FQT/OVqCD+7edmmJpsgCsY820RTD5AkBryuG5IUqR5YQZSdj5xlH5nLgH7YPths7WsLPSpSBNneJdM8aS8aeFA==}
 
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
@@ -5944,6 +5961,8 @@ snapshots:
     dependencies:
       '@pkgr/core': 0.2.4
       tslib: 2.8.1
+
+  tailwind-merge@3.2.0: {}
 
   tailwindcss-animate@1.0.7(tailwindcss@4.1.4):
     dependencies:

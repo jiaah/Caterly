@@ -30,5 +30,8 @@
 	"peerDependencies": {
 		"react": "^18.2.0"
 	},
+	"dependencies": {
+		"@caterly/tailwind-config": "workspace:*"
+	},
 	"devDependencies": {}
 }
