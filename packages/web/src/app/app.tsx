@@ -4,7 +4,7 @@ function App() {
 	return (
 		<>
 			<p className="bg-yellow-300">Hello Web</p>
-			<Button appName="packages/ui" className="text-yellow">
+			<Button appName="packages/ui" className="text-green-700">
 				Click Me
 			</Button>
 		</>

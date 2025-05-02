@@ -5,10 +5,15 @@
 	"type": "module",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"style": "./dist/styles/index.css",
 	"exports": {
 		".": {
 			"import": "./dist/index.js",
 			"types": "./dist/index.d.ts"
+		},
+		"./styles.css": {
+			"import": "./dist/styles/index.css",
+			"style": "./dist/styles/index.css"
 		}
 	},
 	"files": [
