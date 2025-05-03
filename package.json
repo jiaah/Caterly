@@ -13,7 +13,7 @@
 		"lint": "turbo lint",
 		"lint-staged": "lint-staged",
 		"check-types": "turbo check-types",
-		"clean": "rm -rf node_modules .turbo packages/*/node_modules packages/*/dist packages/*/.turbo apps/*/node_modules apps/*/dist apps/*/.turbo",
+		"clean": "rimraf node_modules .turbo && turbo clean",
 		"prepare": "husky"
 	},
 	"lint-staged": {
@@ -68,6 +68,7 @@
 		"lint-staged": "^15.5.1",
 		"prettier": "^3.5.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
+		"rimraf": "^6.0.1",
 		"tailwindcss-animate": "^1.0.7",
 		"turbo": "^2.5.0",
 		"typescript": "^5.4.2",

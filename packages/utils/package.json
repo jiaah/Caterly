@@ -18,6 +18,8 @@
 		"dev": "vite",
 		"build": "tsc -b tsconfig.json",
 		"lint": "eslint . --max-warnings 0",
+		"prettier": "prettier --write .",
+		"clean": "rimraf dist node_modules .turbo .cache",
 		"check-types": "tsc --noEmit"
 	},
 	"dependencies": {},

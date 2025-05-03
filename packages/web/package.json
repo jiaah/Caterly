@@ -24,6 +24,8 @@
 		"build": "vite build --mode lib",
 		"preview": "vite preview",
 		"lint": "eslint . --max-warnings 0",
+		"prettier": "prettier --write .",
+		"clean": "rimraf dist node_modules .turbo .cache",
 		"check-types": "tsc --noEmit"
 	},
 	"dependencies": {

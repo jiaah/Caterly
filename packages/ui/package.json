@@ -24,6 +24,8 @@
 		"dev": "vite",
 		"build": "vite build --mode lib",
 		"lint": "eslint . --max-warnings 0",
+		"prettier": "prettier --write .",
+		"clean": "rimraf dist node_modules .turbo .cache",
 		"generate:component": "turbo gen react-component",
 		"check-types": "tsc --noEmit"
 	},
