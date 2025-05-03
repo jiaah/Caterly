@@ -144,9 +144,14 @@ importers:
       '@caterly/tailwind-config':
         specifier: workspace:*
         version: link:../../tools/tailwind
+      '@caterly/utils':
+        specifier: workspace:*
+        version: link:../utils
       react:
         specifier: ^18.2.0
         version: 18.3.1
+
+  packages/utils: {}
 
   packages/web:
     dependencies:

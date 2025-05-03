@@ -7,7 +7,8 @@
 			"outputs": [
 				"apps/admin/dist/**",
 				"packages/ui/dist/**",
-				"packages/web/dist/**"
+				"packages/web/dist/**",
+				"packages/utils/dist/**"
 			]
 		},
 		"dev": {

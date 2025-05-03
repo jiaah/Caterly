@@ -31,7 +31,8 @@
 		"react": "^18.2.0"
 	},
 	"dependencies": {
-		"@caterly/tailwind-config": "workspace:*"
+		"@caterly/tailwind-config": "workspace:*",
+		"@caterly/utils": "workspace:*"
 	},
 	"devDependencies": {}
 }

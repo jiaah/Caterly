@@ -2,14 +2,15 @@
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"rootDir": ".",
+		"rootDir": "src",
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src"]
 		},
-		"declaration": true,
+		"noEmit": false,
 		"allowImportingTsExtensions": false,
-		"noEmit": false
+		"declaration": true,
+		"composite": true
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist"]

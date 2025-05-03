@@ -1,0 +1,25 @@
+{
+	"name": "@caterly/utils",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"main": "dist/index.ts",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b tsconfig.json",
+		"lint": "eslint . --max-warnings 0",
+		"check-types": "tsc --noEmit"
+	},
+	"dependencies": {},
+	"devDependencies": {}
+}
