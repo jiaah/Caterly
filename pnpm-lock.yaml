@@ -131,7 +131,7 @@ importers:
     dependencies:
       '@caterly/tailwind-config':
         specifier: workspace:*
-        version: link:../../packages/tailwind
+        version: link:../../tools/tailwind
       '@caterly/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -139,13 +139,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/web
 
-  packages/tailwind: {}
-
   packages/ui:
     dependencies:
       '@caterly/tailwind-config':
         specifier: workspace:*
-        version: link:../tailwind
+        version: link:../../tools/tailwind
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -154,10 +152,12 @@ importers:
     dependencies:
       '@caterly/tailwind-config':
         specifier: workspace:*
-        version: link:../tailwind
+        version: link:../../tools/tailwind
       '@caterly/ui':
         specifier: workspace:*
         version: link:../ui
+
+  tools/tailwind: {}
 
 packages:
 
