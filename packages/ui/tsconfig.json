@@ -5,12 +5,15 @@
 		"rootDir": "src",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["src/*"]
 		},
 		"noEmit": false,
 		"allowImportingTsExtensions": false,
 		"declaration": true,
-		"composite": true
+		"composite": true,
+		// React
+		"jsx": "react-jsx",
+		"types": ["react", "react-dom"]
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist"]

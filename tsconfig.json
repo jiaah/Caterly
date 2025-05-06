@@ -3,20 +3,12 @@
 	"compilerOptions": {
 		// 모듈 해석
 		"moduleResolution": "bundler",
-		"noEmit": true,
-		"allowImportingTsExtensions": true,
 		"module": "ESNext",
 		"lib": ["ES2015", "DOM"],
-
-		"baseUrl": ".",
 
 		// 타입 체크
 		"strict": true,
 		"noUncheckedIndexedAccess": true,
-
-		// React
-		"jsx": "react-jsx",
-		"types": ["react", "react-dom"],
 
 		// 빌드
 		"declaration": true,
