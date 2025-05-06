@@ -9,63 +9,91 @@ apps/
 packages/
   └── ui/           # Component library
   └── utils/        # Utility functions
-  └── web/          # Common components (auth, etc.)
 
 ```
 
 ## Scripts for Each Package
 
-**Library Packages (ui, web, utils)**
+**Library Packages (utils, ui, web)**
+<br/> `packages.json`
 
 ```
 "scripts": {
-  "dev": "tsc -w",       // watch mode build
-  "build": "tsc"
+  "tsc:build": "tsc",    // Generate the dist folder initially
+  "dev": "tsc -w",       // Watch and compile TypeScript
 }
 ```
 
 **App Packages (admin, web)**
+<br /> `packages.json`
 
 ```
-import { Button } from '@caterly/ui';
-// Actually references node_modules/@caterly/ui/dist/index.js
+"dependencies": {
+  "@caterly/utils": "workspace:*",  // Link internal package using workspace
+  "@caterly/ui": "workspace:*",
+},
+```
+
+`component.tsx`
+
+```
+import { Button } from '@caterly/ui';  // References node_modules/@caterly/ui/dist/index.js
 ```
 
 ## Real-time Reflection Flow
 
 `[ui/src] --tsc -w--> [ui/dist] --import--> [admin Vite dev server] --HMR--> [browser]`
 
-- Library packages use the **TypeScript compiler**(tsc -w) to watch and compile `.ts` files to `.js`, updating the `dist` folder in real-time.
+- Library packages use `tsc -w` to watch and compile `.ts` files to `.js` and `.d.ts`, updating the `dist` folder in real-time.
 - The app's **Vite dev server** watches the `dist` folder and triggers hot module replacement (HMR) when changes are detected.
 
 ## Execution Strategy
 
-**Parallel dev execution (watch-based)**
+**Dev vs Build**
+
+| Task    | Method          | Purpose                                  |
+| ------- | --------------- | ---------------------------------------- |
+| `dev`   | Parallel `&`    | Real-time updates (HMR) without blocking |
+| `build` | Sequential `&&` | Static output for deployment             |
+
+**Scripts**
 
 ```
-"predev": "pnpm --filter=ui dev & pnpm --filter=utils dev & pnpm --filter=web dev",
-"dev:admin": "pnpm run predev & pnpm --filter=admin dev"
+"scripts": {
+	// Build: Run in sequence respecting the dependency chain
+  "tsc:build": "pnpm --filter=@caterly/utils run build && pnpm --filter=@caterly/ui run tsc:build",
+
+	// Dev: Run in parallel for watch mode (tsc -w)
+  "predev": "pnpm --filter=@caterly/utils run dev & pnpm --filter=@caterly/ui run dev",
+
+	// App dev: Start app after setting up libraries
+  "dev:admin": "pnpm run predev & pnpm --filter=admin run dev",
+}
 ```
 
-- Since `tsc -w` is a persistent task, using `dependsOn: ['^dev']` in Turbo will cause errors.
-- Watch (dev) tasks should be run in parallel without dependencies.
+## Important Notes
+
+**1. Turbo dependsOn Limitation**
+
+- Avoid using `dependsOn: ['^dev']` for watch tasks, as `tsc -w` doesn’t respect the dependency order.
+
+**2. Copying Static Files**
+
+- Use tools like `cpx` or `copyfiles` to copy CSS, images, and static resources, as `tsc` doesn’t handle this.
+
+Example:
+
+```
+"tsc:build": "tsc && cpx 'src/styles/**/*.css' dist/styles"
+```
 
 ## Summary
 
 | Item                 | Strategy/Explanation                                    |
 | -------------------- | ------------------------------------------------------- |
 | Library dev          | `tsc -w` (watch build)                                  |
-| App dev              | Vite dev server                                         |
-| Library → App Link   | Apps directly import JS from the dist folder            |
-| Real-time Reflection | `tsc -w` updates dist, and Vite detects via HMR         |
-| Dev Execution Mode   | Parallel execution without dependencies                 |
-| Build/Test Execution | Sequential execution following Turbo's dependency graph |
-
-## Copying CSS and Static Files to dist
-
-- `tsc` does not copy CSS/images or static resources.
-- Use tools like `cpx`, `copyfiles` to copy static files.
-
-```
-"build": "tsc && cpx 'src/styles/**/*.css' dist/styles"
-```
+| App dev              | Vite dev server (HMR)                                   |
+| Library → App Link   | Link internal packages using `workspace:*` dependencies |
+| Real-time Reflection | `tsc -w` updates `dis`t` → Vite detects via HMR         |
+| Dev Execution Mode   | Parallel execution(`&`) without dependencies            |
+| Build/Test Execution | Sequential execution(`&&`) following dependency graph   |
