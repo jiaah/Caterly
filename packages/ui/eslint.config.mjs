@@ -14,5 +14,12 @@ export default [
 				tsconfigRootDir: __dirname,
 			},
 		},
+		settings: {
+			'import/resolver': {
+				typescript: {
+					project: path.join(__dirname, 'tsconfig.json'),
+				},
+			},
+		},
 	},
 ];

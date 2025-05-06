@@ -11,6 +11,14 @@ export default [
 		languageOptions: {
 			parserOptions: {
 				project: path.join(__dirname, 'tsconfig.json'),
+				tsconfigRootDir: __dirname,
+			},
+		},
+		settings: {
+			'import/resolver': {
+				typescript: {
+					project: path.join(__dirname, 'tsconfig.json'),
+				},
 			},
 		},
 	},

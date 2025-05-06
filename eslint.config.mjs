@@ -31,7 +31,6 @@ export default [
 	// TypeScript 파일 설정
 	{
 		files: ['**/*.{ts,tsx}'],
-
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
