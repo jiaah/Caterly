@@ -140,3 +140,6 @@ dist
 
 # Ignore turbo cache
 .turbo
+
+# TypeScript cache
+*.tsbuildinfo
