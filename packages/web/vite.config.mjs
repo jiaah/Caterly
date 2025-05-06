@@ -16,18 +16,16 @@ export default defineConfig(
 			}),
 			dts({ outDir: 'dist' }),
 		],
+
 		resolve: {
 			alias: {
 				'@': './src',
 			},
 		},
-		server: {
-			port: 5173,
-		},
 		build: {
 			lib: {
-				entry: './src/index.tsx',
-				name: 'admin',
+				entry: './src/index.ts',
+				name: '@caterly/web',
 				fileName: 'index',
 				formats: ['es'],
 			},
@@ -36,6 +34,5 @@ export default defineConfig(
 				external: ['react', 'react-dom', 'react/jsx-runtime'],
 			},
 		},
-		publicDir: 'public',
 	}),
 );

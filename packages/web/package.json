@@ -3,27 +3,29 @@
 	"version": "0.0.1",
 	"private": true,
 	"type": "module",
-	"main": "./dist/app/index.js",
-	"module": "./dist/app/index.js",
-	"types": "./dist/app/index.d.ts",
-	"style": "./dist/app/styles/index.css",
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"style": "./dist/styles/index.css",
 	"exports": {
 		".": {
-			"import": "./dist/app/index.js",
-			"types": "./dist/app/index.d.ts"
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
 		},
 		"./styles.css": {
-			"import": "./dist/app/styles/index.css",
-			"style": "./dist/app/styles/index.css"
+			"import": "./dist/styles/index.css",
+			"style": "./dist/styles/index.css"
 		}
 	},
 	"files": [
 		"dist"
 	],
 	"scripts": {
-		"dev": "tsc -w",
 		"copy:css": "cpx \"src/app/styles/**/*\" dist/app/styles",
-		"build": "tsc & pnpm copy:css",
+		"copy:css:watch": "cpx -w \"src/app/styles/**/*\" dist/app/styles",
+		"tsc:build": "tsc -p tsconfig.json & pnpm run copy:css",
+		"dev": "tsc -w & pnpm run copy:css:watch",
+		"build": "vite build",
 		"preview": "vite preview",
 		"lint": "eslint . --max-warnings 0",
 		"prettier": "prettier --write .",

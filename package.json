@@ -4,16 +4,17 @@
 	"type": "module",
 	"scripts": {
 		"build": "turbo run build",
+		"build:utils": "turbo run build --filter=@caterly/utils",
 		"build:ui": "turbo run build --filter=@caterly/ui",
 		"build:web": "turbo run build --filter=@caterly/web",
 		"build:admin": "turbo run build --filter=admin",
-		"prebuild": "pnpm run build:utils & pnpm run build:ui & pnpm run build:web",
-		"predev": "pnpm --filter=ui dev & pnpm --filter=utils dev & pnpm --filter=web dev",
-		"dev:admin": "pnpm run predev & pnpm --filter=admin dev",
+		"tsc:build": "pnpm --filter=@caterly/utils run build && pnpm --filter=@caterly/ui run tsc:build && pnpm --filter=@caterly/web run tsc:build",
+		"predev": "pnpm --filter=@caterly/utils run dev & pnpm --filter=@caterly/ui run dev & pnpm --filter=@caterly/web run dev",
+		"dev:admin": "pnpm run predev & pnpm --filter=admin run dev",
 		"lint": "turbo run lint",
 		"lint-staged": "lint-staged",
 		"check-types": "turbo run check-types",
-		"clean": "rimraf node_modules .turbo && turbo clean",
+		"clean": "rimraf node_modules .turbo && pnpm -r exec rimraf dist",
 		"prepare": "husky"
 	},
 	"lint-staged": {

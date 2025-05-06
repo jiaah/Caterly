@@ -6,24 +6,26 @@
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"style": "./dist/styles/index.css",
+	"style": "./dist/style.css",
 	"exports": {
 		".": {
 			"import": "./dist/index.js",
 			"types": "./dist/index.d.ts"
 		},
 		"./styles.css": {
-			"import": "./dist/styles/index.css",
-			"style": "./dist/styles/index.css"
+			"import": "./dist/style.css",
+			"style": "./dist/style.css"
 		}
 	},
 	"files": [
 		"dist"
 	],
 	"scripts": {
-		"dev": "tsc -w",
 		"copy:css": "cpx \"src/styles/**/*\" dist/styles",
-		"build": "tsc & pnpm copy:css",
+		"copy:css:watch": "cpx -w \"src/styles/**/*\" dist/styles",
+		"tsc:build": "tsc -p tsconfig.json & pnpm run copy:css",
+		"dev": "tsc -w & pnpm run copy:css:watch",
+		"build": "vite build",
 		"lint": "eslint . --max-warnings 0",
 		"prettier": "prettier --write .",
 		"clean": "rimraf dist node_modules .turbo .cache",
