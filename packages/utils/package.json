@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
-	"main": "dist/index.ts",
+	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
@@ -15,8 +15,8 @@
 		"dist"
 	],
 	"scripts": {
-		"dev": "vite",
-		"build": "tsc -b tsconfig.json",
+		"dev": "tsc -w",
+		"build": "tsc",
 		"lint": "eslint . --max-warnings 0",
 		"prettier": "prettier --write .",
 		"clean": "rimraf dist node_modules .turbo .cache",

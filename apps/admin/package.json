@@ -14,9 +14,10 @@
 		"check-types": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@caterly/tailwind-config": "workspace:*",
+		"@caterly/utils": "workspace:*",
 		"@caterly/ui": "workspace:*",
-		"@caterly/web": "workspace:*",
-		"@caterly/tailwind-config": "workspace:*"
+		"@caterly/web": "workspace:*"
 	},
 	"devDependencies": {}
 }

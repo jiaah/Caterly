@@ -21,8 +21,9 @@
 		"dist"
 	],
 	"scripts": {
-		"dev": "vite",
-		"build": "vite build --mode lib",
+		"dev": "tsc -w",
+		"copy:css": "cpx \"src/styles/**/*\" dist/styles",
+		"build": "tsc & pnpm copy:css",
 		"lint": "eslint . --max-warnings 0",
 		"prettier": "prettier --write .",
 		"clean": "rimraf dist node_modules .turbo .cache",

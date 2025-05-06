@@ -4,26 +4,20 @@
 		"build": {
 			"dependsOn": ["^build"],
 			"inputs": ["$TURBO_DEFAULT$", ".env*"],
-			"outputs": [
-				"apps/admin/dist/**",
-				"packages/ui/dist/**",
-				"packages/web/dist/**",
-				"packages/utils/dist/**"
-			]
+			"outputs": ["dist/**"]
 		},
 		"dev": {
-			"dependsOn": ["build"],
 			"cache": false,
 			"persistent": true,
 			"outputs": []
 		},
 		"lint": {
 			"dependsOn": ["^lint"],
-			"inputs": ["apps/**/src/**", "packages/**/src/**"],
+			"inputs": ["apps/**/src/**", "packages/**/src/**", "tools/**/src/**"],
 			"outputs": []
 		},
 		"check-types": {
-			"inputs": ["apps/**/src/**", "packages/**/src/**"],
+			"inputs": ["apps/**/src/**", "packages/**/src/**", "tools/**/src/**"],
 			"outputs": []
 		}
 	},
