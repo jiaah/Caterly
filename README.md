@@ -33,7 +33,7 @@ It brings together recurring and catering management, meal planning, HR, payroll
 ```tsx
 monorepo/
 ├── apps/
-│   ├── adin/            # Admin app
+│   ├── admin/           # Admin app
 │   ├── client/          # Client app
 │   ├── portal/          # Public entry point before login
 ├── packages/
