@@ -10,7 +10,8 @@
 		"vercel",
 		"vite",
 		"Turborepo",
-		"commitlint"
+		"commitlint",
+		"predev"
 	],
 	"ignorePaths": ["node_modules/**", "*-dist/**", ".turbo/**"]
 }
