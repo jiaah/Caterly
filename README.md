@@ -123,7 +123,7 @@ pnpm dev:client
 
 💡 Run both commands together to enable real-time updates via Vite's HMR (Hot Module Replacement), which instantly reflects changes without a full page reload.
 
-📄 For detailed instructions on setting up real-time TypeScript and CSS updates with tsc -w, cpx -w, and Vite HMR in a monorepo, refer to [Monorepo-live-reload-setup](./docs/monorepo-live-reload-setup.md).
+📄 For detailed instructions on setting up real-time TypeScript and CSS updates with tsc -w, cpx -w, and Vite HMR in a monorepo, refer to [Monorepo-live-reloading-setup](./docs/monorepo-live-reloading-setup.md).
 
 ## 🔄 Development to Production Pipeline
 
