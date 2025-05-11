@@ -14,7 +14,7 @@
 		"lint": "turbo run lint",
 		"lint-staged": "lint-staged",
 		"check-types": "turbo run check-types",
-		"clean": "rimraf node_modules .turbo && pnpm -r exec rimraf dist",
+		"clean": "pnpm -r run clean && pnpm -r exec rimraf .turbo || true",
 		"prepare": "husky"
 	},
 	"lint-staged": {

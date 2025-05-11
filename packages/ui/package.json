@@ -28,7 +28,7 @@
 		"build": "vite build",
 		"lint": "eslint . --max-warnings 0",
 		"prettier": "prettier --write .",
-		"clean": "rimraf dist node_modules .turbo .cache",
+		"clean": "rimraf dist node_modules .turbo tsconfig.tsbuildinfo || true",
 		"generate:component": "turbo gen react-component",
 		"check-types": "tsc --noEmit"
 	},

@@ -2,7 +2,7 @@
 	"name": "@caterly/tailwind-config",
 	"type": "module",
 	"scripts": {
-		"clean": "git clean -xdf .cache .turbo node_modules"
+		"clean": "if [ -d dist ] || [ -d node_modules ] || [ -d .turbo ] || [ -f tsconfig.tsbuildinfo ]; then rimraf dist node_modules .turbo tsconfig.tsbuildinfo; fi"
 	},
 	"exports": {
 		"./styles.css": "./styles.css"
