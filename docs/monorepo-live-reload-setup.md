@@ -1,4 +1,4 @@
-# Real-time Library Updates in Vite Monorepo
+# Setting Up Live-Reloading for Shared Libraries in a Vite Monorepo
 
 ## Package Structure
 
@@ -12,88 +12,102 @@ packages/
 
 ```
 
-## Scripts for Each Package
+## Development Workflow
 
-**Library Packages (utils, ui, web)**
-<br/> `packages.json`
-
-```
-"scripts": {
-  "tsc:build": "tsc",    // Generate the dist folder initially
-  "dev": "tsc -w",       // Watch and compile TypeScript
-}
+```mermaid
+graph LR
+A[Library Source] -->|tsc -w| B[dist]
+B -->|import| C[Vite Dev Server]
+C -->|HMR| D[Browser]
 ```
 
-**App Packages (admin, web)**
-<br /> `packages.json`
+### 1. Library Development
 
-```
-"dependencies": {
-  "@caterly/utils": "workspace:*",  // Link internal package using workspace
-  "@caterly/ui": "workspace:*",
-},
-```
+#### TypeScript (`tsc -w`)
 
-`component.tsx`
+- Watches `.ts`, `.tsx` changes
+- Automatic compilation to `.js`,`.d.ts` files in `dist` folder
 
-```
-import { Button } from '@caterly/ui';  // References node_modules/@caterly/ui/dist/index.js
-```
+#### CSS (`cpx -w`)
 
-## Real-time Reflection Flow
+- Watches `src/styles/**`
+- Automatic copying to `dist` folder
 
-`[ui/src] --tsc -w--> [ui/dist] --import--> [admin Vite dev server] --HMR--> [browser]`
+### 2. Application Development
 
-- Library packages use `tsc -w` to watch and compile `.ts` files to `.js` and `.d.ts`, updating the `dist` folder in real-time.
-- The app's **Vite dev server** watches the `dist` folder and triggers hot module replacement (HMR) when changes are detected.
+#### Vite Dev Server
+
+- Monitors `dist/` changes
+- Browser auto-updates via HMR
+- Immediate reflection of library changes
 
 ## Execution Strategy
 
-**Dev vs Build**
+### 1. Script Settings
 
-| Task    | Method          | Purpose                                  |
-| ------- | --------------- | ---------------------------------------- |
-| `dev`   | Parallel `&`    | Real-time updates (HMR) without blocking |
-| `build` | Sequential `&&` | Static output for deployment             |
-
-**Scripts**
+<details> <summary><code>root/package.json</code> scripts</summary>
 
 ```
-"scripts": {
-	// Build: Run in sequence respecting the dependency chain
-  "tsc:build": "pnpm --filter=@caterly/utils run build && pnpm --filter=@caterly/ui run tsc:build",
-
-	// Dev: Run in parallel for watch mode (tsc -w)
-  "predev": "pnpm --filter=@caterly/utils run dev & pnpm --filter=@caterly/ui run dev",
-
-	// App dev: Start app after setting up libraries
-  "dev:admin": "pnpm run predev & pnpm --filter=admin run dev",
-}
+"tsc:build": "pnpm --filter=@caterly/utils run build && pnpm --filter=@caterly/ui run tsc:build"
+"predev": "pnpm --filter=@caterly/utils run dev & pnpm --filter=@caterly/ui run dev"
+"dev:admin": "pnpm run predev & pnpm --filter=admin run dev"
 ```
 
-## Important Notes
+- `&` runs multiple commands in parallel, without waiting for the previous one to finish.
+- `&&` runs the next command only if the previous one completes successfully.
+</details>
 
-**1. Turbo dependsOn Limitation**
-
-- Avoid using `dependsOn: ['^dev']` for watch tasks, as `tsc -w` doesn’t respect the dependency order.
-
-**2. Copying Static Files**
-
-- Use tools like `cpx` or `copyfiles` to copy CSS, images, and static resources, as `tsc` doesn’t handle this.
-
-Example:
+<details> <summary><code>packages/*/package.json</code> scripts</summary>
 
 ```
-"tsc:build": "tsc && cpx 'src/styles/**/*.css' dist/styles"
+"copy:css": "cpx \"src/styles/**/\*\" dist/styles"
+"copy:css:watch": "cpx -w \"src/styles/**/\*\" dist/styles"
+"tsc:build": "tsc -p tsconfig.json & pnpm run copy:css"
+"dev": "tsc -w & pnpm run copy:css:watch"
 ```
+
+</details>
+
+### 2. Workspace Linking
+
+```
+"dependencies": {
+	"@caterly/utils": "workspace:*",
+	"@caterly/ui": "workspace:*",
+},
+```
+
+📄 For installation and environment setup, refer to [Getting Started guide](https://github.com/jiaah/Caterly?tab=readme-ov-file#-getting-started)
 
 ## Summary
 
-| Item                 | Strategy/Explanation                                    |
-| -------------------- | ------------------------------------------------------- |
-| Library dev          | `tsc -w` (watch build)                                  |
-| App dev              | Vite dev server (HMR)                                   |
-| Library → App Link   | Link internal packages using `workspace:*` dependencies |
-| Real-time Reflection | `tsc -w` updates `dis`t` → Vite detects via HMR         |
-| Dev Execution Mode   | Parallel execution(`&`) without dependencies            |
-| Build/Test Execution | Sequential execution(`&&`) following dependency graph   |
+| Item                 | Strategy/Explanation                                  |
+| -------------------- | ----------------------------------------------------- |
+| Library dev          | `tsc -w`, `cpx -w` for real-time compilation          |
+| App dev              | Vite dev server with HMR                              |
+| Library → App Link   | Use `workspace:*` for internal dependencies           |
+| Real-time Reflection | Changes in `dist` trigger Vite’s HMR reload           |
+| Dev Execution Mode   | Run watch scripts in parallel with `&`                |
+| Build/Test Execution | Run in sequence with `&&` to respect dependency graph |
+
+## Key Considerations
+
+1. **Turbo dependsOn Limitation**
+
+   - Avoid `dependsOn: ['^dev']` for watch mode
+   - Reason: `tsc -w` doesn't respect dependency order
+
+## Common Issues
+
+1. **Build Conflicts**
+
+   - Solution: Run `pnpm clean` before development
+   - Avoids conflicts between Vite build outputs and TypeScript’s dist files.
+
+2. **TypeScript Watch Issues**
+
+   - Solution: Ensure no conflicting `dist` folders exist
+
+3. **HMR Not Working**
+
+   - Solution: Check if all watch processes are running

@@ -6,7 +6,7 @@ It brings together recurring and catering management, meal planning, HR, payroll
 
 | **Version** | **Features**                                                                                           | **Focus**    |
 | ----------- | ------------------------------------------------------------------------------------------------------ | ------------ |
-| **MVP**     | **[Admin]** Integrated Login System, Client & Catering Management                                      | **Core**     |
+| **MVP**     | **[Admin]** Login System, Client & Catering Management                                                 | **Core**     |
 | **v1.0.0**  | **[Client]** Meal Quantity Registration                                                                | **Client**   |
 | **v2.0.0**  | **[Admin]** Transaction Statements, Revenue Overview <br/> **[Client]** Transaction Statement Issuance | **Finance**  |
 | **v3.0.0**  | **[Admin]** Employee Management, Work Hours Tracking, Payroll Management                               | **HR**       |
@@ -28,7 +28,7 @@ It brings together recurring and catering management, meal planning, HR, payroll
 
 ## 📁 Monorepo & Architecture
 
-### Monorepo Architecture
+### Monorepo
 
 ```tsx
 monorepo/
@@ -43,12 +43,14 @@ monorepo/
 │   └── web/           	 # Common features (e.g.,layout, auth, invoice, etc.)
 ```
 
-Why Monorepo?
+#### Why Monorepo?
 
-1. Shared resources are centralized for reuse and easier updates.
-2. Unified environment minimizes dependency and compatibility issues.
+A monorepo centralizes code and resources, making it easier to manage and update shared components.
 
-### Feature-Sliced-Design(FSD) Architecture
+- **Centralized Resources**: Shared code and assets are easier to reuse and update across all apps.
+- **Unified Environment**: Reduces dependency conflicts and compatibility issues between projects.
+
+### Feature-Sliced Design (FSD)
 
 ```tsx
 src/
@@ -61,10 +63,12 @@ src/
 
 ```
 
-Why Feature-Sliced Design?
+#### Why Feature-Sliced Design?
 
-1. Modular structure simplifies managing complex features.
-2. Scalable design supports versioned feature growth (e.g., MVP → v1.0.0 → v2.0.0).
+Feature-Sliced Design (FSD) breaks the application into independent, feature-specific modules, making complex features easier to manage.
+
+- **Modular Structure**: Isolates features into reusable modules, simplifying maintenance and collaboration.
+- **Scalable Design**: Supports incremental growth and versioning (e.g., MVP → v1.0.0 → v2.0.0) without disrupting existing features.
 
 ### Package Dependency Overview
 
@@ -77,22 +81,39 @@ Why Feature-Sliced Design?
 - Node.js 18.x or higher
 - pnpm 9.x or higher
 
-1. Install dependencies
+### Development
+
+1. **Install dependencies**
 
 ```bash
 pnpm install
 ```
 
-2. Set up environment variables
+2. **Set up environment variables**
 
 ```bash
 cp .env.dev
-#
 ```
 
-### Development
+3. **Clean existing build files**
 
-Start the development server
+```bash
+pnpm clean
+```
+
+4. **Initial TypeScript & CSS build**
+
+```bash
+pnpm tsc:build
+```
+
+5. **Start TypeScript & CSS watch mode for libraries**
+
+```bash
+pnpm predev
+```
+
+6. **Start app development server**
 
 ```bash
 # Start specific application
@@ -100,18 +121,9 @@ pnpm dev:admin
 pnpm dev:client
 ```
 
-### Build
+💡 Run both commands together to enable real-time updates via Vite's HMR (Hot Module Replacement), which instantly reflects changes without a full page reload.
 
-```bash
-# Build all packages and applications
-pnpm build
-
-# Build specific application
-pnpm build:admin
-pnpm build:client
-```
-
-After building, production files will be in the `apps/**/dist/` folder, ready for deployment.
+📄 For detailed instructions on setting up real-time TypeScript and CSS updates with tsc -w, cpx -w, and Vite HMR in a monorepo, refer to [Monorepo-live-reload-setup](./docs/monorepo-live-reload-setup.md).
 
 ## 🔄 Development to Production Pipeline
 
@@ -119,9 +131,4 @@ After building, production files will be in the `apps/**/dist/` folder, ready fo
 
 ## 🌐 Browser / Mobile Compatibility
 
-| Environment                           | Support Status                                         |
-| ------------------------------------- | ------------------------------------------------------ |
-| **Windows / macOS + Latest Browsers** | ✅ Fully Supported                                     |
-| **iOS 13+ / Android 7+**              | ✅ Fully Supported                                     |
-| **Older Versions**                    | <span style="color: yellow;">⚠️</span> Limited Support |
-| **IE11 and below**                    | ❌ Not Supported                                       |
+Older Versions: Support for legacy browsers (e.g., IE11) is limited, and users are encouraged to update for optimal experience.
