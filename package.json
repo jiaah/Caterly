@@ -8,7 +8,7 @@
 		"build:ui": "turbo run build --filter=@caterly/ui",
 		"build:web": "turbo run build --filter=@caterly/web",
 		"build:admin": "turbo run build --filter=admin",
-		"tsc:build": "pnpm --filter=@caterly/utils run build && pnpm --filter=@caterly/ui run tsc:build && pnpm --filter=@caterly/web run tsc:build",
+		"tsc:build": "pnpm --filter=@caterly/utils run tsc:build && pnpm --filter=@caterly/ui run tsc:build && pnpm --filter=@caterly/web run tsc:build",
 		"predev": "pnpm --filter=@caterly/utils run dev & pnpm --filter=@caterly/ui run dev & pnpm --filter=@caterly/web run dev",
 		"dev:admin": "pnpm run predev & pnpm --filter=admin run dev",
 		"lint": "turbo run lint",
