@@ -1,21 +1,18 @@
-import tailwindcssVite from '@tailwindcss/vite';
+/* eslint-disable no-undef */
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { defineConfig, mergeConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import baseConfig from '../../vite.config.mjs';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export default defineConfig(
 	mergeConfig(baseConfig, {
 		root: '.',
 		plugins: [
 			react(),
-			tailwindcssVite(),
+			tailwindcss(),
 			tsconfigPaths({
 				projects: ['./tsconfig.json'],
 			}),
