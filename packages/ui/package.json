@@ -45,12 +45,9 @@
 		"@caterly/utils": "workspace:*",
 		"@radix-ui/react-slot": "^1.2.3",
 		"class-variance-authority": "^0.7.1",
-		"lucide-react": "^0.511.0",
-		"tailwindcss": "4.1.4"
+		"lucide-react": "^0.511.0"
 	},
 	"devDependencies": {
-		"@tailwindcss/vite": "^4.1.7",
-		"@types/node": "^22.15.23",
 		"tw-animate-css": "^1.3.0"
 	}
 }
