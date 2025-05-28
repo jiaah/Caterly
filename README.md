@@ -24,7 +24,6 @@ It brings together recurring and catering management, meal planning, HR, payroll
 | **Package Manager** | **pnpm**        | Fast installs & disk-efficient with strict dependency isolation |
 | **Bundler**         | **Vite**        | Fast HMR & minimal config                                       |
 | **Hosting**         | **Vercel**      | Free tier, Seamless Git deploys & edge speed deploy             |
-| **Docs**            | **Markdown**    | History management & document safety                            |
 
 ## 📁 Monorepo & Architecture
 
@@ -45,10 +44,8 @@ monorepo/
 
 #### Why Monorepo?
 
-A monorepo centralizes code and resources, making it easier to manage and update shared components.
-
-- **Centralized Resources**: Shared code and assets are easier to reuse and update across all apps.
-- **Unified Environment**: Reduces dependency conflicts and compatibility issues between projects.
+- **Centralized Resources**: Makes it easier to reuse and update shared code and assets across all apps.
+- **Unified Environment**: Minimizes dependency conflicts and compatibility issues between projects.
 
 ### Feature-Sliced Design (FSD)
 
@@ -63,12 +60,11 @@ src/
 
 ```
 
-#### Why Feature-Sliced Design?
+#### Why Feature-Sliced Design(FSD)?
 
-Feature-Sliced Design (FSD) breaks the application into independent, feature-specific modules, making complex features easier to manage.
+- **Maintainable**: Breaks the application into independent feature modules, minimizing cross-impact and simplifying updates.
 
-- **Modular Structure**: Isolates features into reusable modules, simplifying maintenance and collaboration.
-- **Scalable Design**: Supports incremental growth and versioning (e.g., MVP → v1.0.0 → v2.0.0) without disrupting existing features.
+- **Scalable**: Enables incremental growth and version updates (e.g., MVP → v1.0.0 → v2.0.0).
 
 ### Package Dependency Overview
 
@@ -89,25 +85,13 @@ Feature-Sliced Design (FSD) breaks the application into independent, feature-spe
 pnpm install
 ```
 
-2. **Set up environment variables**
-
-```bash
-cp .env.dev
-```
-
-3. **Initial TypeScript & CSS build**
+2. **Initial TypeScript & CSS build**
 
 ```bash
 pnpm tsc:build
 ```
 
-4. **Start TypeScript & CSS watch mode for libraries**
-
-```bash
-pnpm predev
-```
-
-5. **Start app development server**
+3. **Start app development server**
 
 ```bash
 # Start specific application
@@ -115,9 +99,15 @@ pnpm dev:admin
 pnpm dev:client
 ```
 
-💡 Run both commands together to enable real-time updates via Vite's HMR (Hot Module Replacement), which instantly reflects changes without a full page reload.
+This command will:
 
-📄 For detailed instructions on setting up real-time TypeScript and CSS updates with tsc -w, cpx -w, and Vite HMR in a monorepo, refer to [Monorepo-live-reloading-setup](./docs/monorepo-live-reloading-setup.md).
+- Start TypeScript watch mode for shared libraries (`tsc -w`)
+- Enable CSS file watching and copying (`cpx -w`)
+- Launch the Vite development server with HMR
+
+💡 Changes in shared libraries will be automatically reflected in the application through Vite's Hot Module Replacement (HMR).
+
+📄 For detailed instructions on the monorepo development setup, refer to [Monorepo-live-reloading-setup](./docs/monorepo-live-reloading-setup.md).
 
 ## 🔄 Development to Production Pipeline
 
