@@ -95,25 +95,19 @@ pnpm install
 cp .env.dev
 ```
 
-3. **Clean existing build files**
-
-```bash
-pnpm clean
-```
-
-4. **Initial TypeScript & CSS build**
+3. **Initial TypeScript & CSS build**
 
 ```bash
 pnpm tsc:build
 ```
 
-5. **Start TypeScript & CSS watch mode for libraries**
+4. **Start TypeScript & CSS watch mode for libraries**
 
 ```bash
 pnpm predev
 ```
 
-6. **Start app development server**
+5. **Start app development server**
 
 ```bash
 # Start specific application
