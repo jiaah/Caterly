@@ -48,8 +48,8 @@ C -->|HMR| D[Browser]
 <details> <summary><code>root/package.json</code> scripts</summary>
 
 ```
-"tsc:build": "pnpm --filter=@caterly/utils run build && pnpm --filter=@caterly/ui run tsc:build"
-"predev": "pnpm --filter=@caterly/utils run dev & pnpm --filter=@caterly/ui run dev"
+"tsc:build": "pnpm --filter=@caterly/utils run build && pnpm --filter=@cately/design run tsc:build"
+"predev": "pnpm --filter=@caterly/utils run dev & pnpm --filter=@cately/design run dev"
 "dev:admin": "pnpm run predev & pnpm --filter=admin run dev"
 ```
 
@@ -73,7 +73,7 @@ C -->|HMR| D[Browser]
 ```
 "dependencies": {
 	"@caterly/utils": "workspace:*",
-	"@caterly/ui": "workspace:*",
+	"@cately/design": "workspace:*",
 },
 ```
 

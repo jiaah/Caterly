@@ -1,12 +1,10 @@
-import { Button } from '@caterly/ui';
+import { Button } from '@cately/design';
 
 function App() {
 	return (
 		<>
 			<p className="bg-yellow-300">Hello Web</p>
-			<Button appName="packages/web" className="text-tertiary text-4xl">
-				Click Me
-			</Button>
+			<Button className="text-tertiary text-4xl">Click Me</Button>
 		</>
 	);
 }

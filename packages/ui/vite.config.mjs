@@ -26,7 +26,7 @@ export default defineConfig(
 		build: {
 			lib: {
 				entry: './src/index.ts',
-				name: '@caterly/ui',
+				name: '@cately/design',
 				fileName: 'index',
 				formats: ['es'],
 			},

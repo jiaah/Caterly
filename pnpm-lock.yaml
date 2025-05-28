@@ -132,12 +132,12 @@ importers:
 
   apps/admin:
     dependencies:
+      '@cately/design':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@caterly/tailwind-config':
         specifier: workspace:*
         version: link:../../tools/tailwind
-      '@caterly/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
       '@caterly/utils':
         specifier: workspace:*
         version: link:../../packages/utils
@@ -189,12 +189,12 @@ importers:
 
   packages/web:
     dependencies:
+      '@cately/design':
+        specifier: workspace:*
+        version: link:../ui
       '@caterly/tailwind-config':
         specifier: workspace:*
         version: link:../../tools/tailwind
-      '@caterly/ui':
-        specifier: workspace:*
-        version: link:../ui
 
   tools/tailwind: {}
 

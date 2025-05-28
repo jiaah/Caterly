@@ -18,7 +18,7 @@
 	"dependencies": {
 		"@caterly/tailwind-config": "workspace:*",
 		"@caterly/utils": "workspace:*",
-		"@caterly/ui": "workspace:*",
+		"@cately/design": "workspace:*",
 		"@caterly/web": "workspace:*"
 	},
 	"devDependencies": {}

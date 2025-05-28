@@ -1,4 +1,4 @@
-import { Button } from '@caterly/ui';
+import { Button } from '@cately/design';
 import { App } from '@caterly/web';
 
 export default function HomePage() {
