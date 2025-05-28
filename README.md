@@ -1,6 +1,6 @@
 # All-in-One Catering Operations Platform
 
-It brings together recurring and catering management, meal planning, HR, payroll, and revenue tracking into one unified system, customized for internal use within a real-world business environment.
+Unified platform for catering, revenue and HR — streamlined for real business.
 
 ## 🌟 Key Features
 
