@@ -1,24 +1,109 @@
+:root {
+	/* light mode colors */
+	--color-background: #ffffff;
+	--color-surface: #fefefe;
+	--color-surface-muted: #f2f2f2;
+
+  --color-brand: #4a3e33;           
+  --color-primary: #a86a3c;        
+  --color-primary-hover: #8c5630;
+
+	--color-secondary: #a8824f;
+	--color-secondary-hover: #8b6a3c;
+
+  --color-accent: #888888;         
+  --color-accent-hover: #555555;
+
+  --color-base: #2a2a2a;            
+
+  --color-link: #c46228;             
+  --color-link-hover: #a74f1f;
+
+  --color-error-bg: #f9e7e4;        
+  --color-error: #a7382f;           
+	
+	--color-info-bg: #e8f0fb;         
+	--color-info: #32507a;
+
+	--color-success-bg: #e6f4ea;
+	--color-success: #3a7d44;
+
+	--color-warning-bg: #fff4d6;
+	--color-warning: #b8860b;
+}
+
+.dark {
+	/* dark mode colors */
+  --color-background: #1a1a18;
+  --color-surface: #12110f; 
+	--color-surface-muted: #2a2a2a;
+
+  --color-brand: #d4c8ba;         
+  --color-primary: #d08a58;         
+  --color-primary-hover: #bb6e3b;
+	
+	--color-secondary: #b2966a;
+	--color-secondary-hover: #8f7f6b;
+
+  --color-accent: #aaaaaa;         
+  --color-accent-hover: #dddddd;
+
+  --color-base: #f2f2f2;            
+
+  --color-link: #f08b45;          
+  --color-link-hover: #d47028;
+
+  --color-error-bg: #3a1a1a;        
+  --color-error: #e76b5b;         
+
+  --color-info-bg: #243041;        
+  --color-info: #92a9c9;  
+	
+  --color-success-bg: #22442c;
+  --color-success: #82c182;
+
+  --color-warning-bg: #6b5700;
+  --color-warning: #f2c94c;
+}
+
 @theme {
 	/* breakpoints */
 	--breakpoint-sm: 480px;
 	--breakpoint-md: 768px;
 	--breakpoint-lg: 976px;
 
+	/* font */
+	--font-primary: "Pretendard", "system-ui", "sans-serif";
+	
 	/* colors */
-	--color-text: #333; /* Default text color */
+	--color-brand: var(--color-brand);
+	--color-background: var(--color-background);
+	--color-surface: var(--color-surface);
+	--color-surface-muted: var(--color-surface-muted);
+	--color-primary: var(--color-primary);
+	--color-primary-hover: var(--color-primary-hover);
+	--color-secondary: var(--color-secondary);
+	--color-secondary-hover: var(--color-secondary-hover);
+	--color-accent: var(--color-accent);
+	--color-accent-hover: var(--color-accent-hover);
+	--color-base: var(--color-base);
+	--color-link: var(--color-link);
+	--color-link-hover: var(--color-link-hover);
+	--color-error: var(--color-error);
+	--color-error-bg: var(--color-error-bg);
+	--color-info: var(--color-info);
+	--color-info-bg: var(--color-info-bg);
+	--color-success: var(--color-success);
+	--color-success-bg: var(--color-success-bg);
+	--color-warning: var(--color-warning);
+	--color-warning-bg: var(--color-warning-bg);
 
-	--color-primary: #ee9105; /* Primary color 1 (Bright orange) */
-	--color-secondary: #ed6802; /* Primary color 2 (Dark orange) */
-	--color-tertiary: #e8716f; /* Primary color 3 (Soft red-orange) */
-	--color-accent: #6c757d; /* Accent color (Midtone gray) */
-	--color-link: #ed6802; /* Link color (Same as primary color 2) */
-	--color-bg-light: #f5f5f5; /* Background color (Light gray) */
-	--color-bg-dark: #212529; /* Background color (Dark gray) */
-	--color-shadow: #e0e0e0; /* Shadow and border color (Soft gray) */
+	/* overlay */
+	--color-overlay-bg: rgba(0, 0, 0, 0.3);
+}
 
-	--color-primary-hover: #d97704; /* Primary color hover (Darker orange) */
-	--color-secondary-hover: #d45a01; /* Secondary color hover (Darker dark orange) */
-	--color-tertiary-hover: #e0605a; /* Tertiary color hover (Slightly darker red-orange) */
-	--color-accent-hover: #5a6268; /* Accent color hover (Darker midtone gray) */
-	--color-link-hover: #d45a01; /* Link hover (Same as secondary hover color) */
+@layer base {
+  body {
+    @apply font-primary;
+  }
 }
