@@ -4,16 +4,18 @@ export default {
 		'type-enum': [
 			2,
 			'always',
-			['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'],
+			['feat', 'fix', 'docs', 'refactor', 'test', 'chore'],
 		],
 		'scope-enum': [
 			2,
 			'always',
 			[
-				'web',
 				'admin',
 				'ui',
-				'',
+				'utils',
+				'web',
+				'tailwind',
+				'', // empty scope for global changes
 			],
 		],
 		'subject-case': [2, 'never', ['pascal-case', 'upper-case']],
