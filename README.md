@@ -32,14 +32,15 @@ Unified platform for catering, revenue and HR — streamlined for real business.
 ```tsx
 monorepo/
 ├── apps/
-│   ├── admin/           # Admin app
-│   ├── client/          # Client app
-│   ├── portal/          # Public entry point before login
-├── packages/
-│   ├── ui/              # UI library abstraction layer (e.g.,Button, Modal, etc.)
-│   ├── utils/           # Shared utility functions
-│   ├── types/           # Global TypeScript types (e.g.,domain models)
-│   └── web/           	 # Common features (e.g.,layout, auth, invoice, etc.)
+│    ├── admin/           # Admin application
+│    ├── client/          # End-user application
+│    └── portal/          # Unauthenticated entry point (e.g., marketing site, login page)
+└── packages/
+│    ├── ui/              # Design system & shared UI components (e.g., Button, Modal)
+│    ├── utils/           # Common utility functions used across apps
+│    └── web/             # Cross-cutting features (e.g., layout, auth)
+└── tools/
+     └── tailwind/        # Tailwind configuration and theme
 ```
 
 #### Why Monorepo?
@@ -49,22 +50,27 @@ monorepo/
 
 ### Feature-Sliced Design (FSD)
 
-```tsx
-src/
-├── app/         # Application setup (routing, global providers, styling, etc.)
-├── pages/       # Route-level compositions (full screen, entry points per route)
-├── widgets/     # Composed UI blocks made of multiple features and entities
-├── features/    # Standalone feature modules focused on user interactions
-├── entities/    # Domain models representing core business logic (DB schemas, APIs)
-└── shared/      # Reusable utilities, UI components, hooks, types, etc.
+<p align="center"><img src="https://github.com/user-attachments/assets/7d4c4c01-71c2-43ea-b5d3-67b33910e3cd"/></p>
 
-```
+#### Layers
+
+- **app**: Application setup and global configurations
+- **pages**: Full-page views tied to specific routes
+- **widgets**: Non-reusable UI units composed of features and entities
+- **features**: Reusable implementations with user interaction–based C.U.D (Create, Update, Delete) logic
+- **entities**: Core business models with read-focused logic
+
+📄 Refer to [the official documentation for details on Segments](https://feature-sliced.github.io/documentation/docs/get-started/overview#segments).
+
+#### Rules
+
+- No usage of modules within the same or higher layers
+- Access only via index.ts to enforce encapsulation
 
 #### Why Feature-Sliced Design(FSD)?
 
-- **Maintainable**: Breaks the application into independent feature modules, minimizing cross-impact and simplifying updates.
-
-- **Scalable**: Enables incremental growth and version updates (e.g., MVP → v1.0.0 → v2.0.0).
+- **Maintainability**: High cohesion and low coupling enable isolated changes without impacting the entire app.
+- **Scalability**: Supports incremental growth and seamless version updates (e.g., MVP → v1.0.0 → v2.0.0).
 
 ### Package Dependency Overview
 
