@@ -11,7 +11,7 @@ export default {
 			'always',
 			[
 				'admin',
-				'ui',
+				'design',
 				'utils',
 				'web',
 				'tailwind',
