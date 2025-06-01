@@ -18,8 +18,8 @@
 		"prepare": "husky"
 	},
 	"lint-staged": {
-		"packages/ui/src/*.{ts,tsx,js,jsx}": [
-			"eslint --config packages/ui/eslint.config.mjs --fix",
+		"packages/design/src/*.{ts,tsx,js,jsx}": [
+			"eslint --config packages/design/eslint.config.mjs --fix",
 			"prettier --write"
 		],
 		"packages/web/src/**/*.{ts,tsx,js,jsx}": [

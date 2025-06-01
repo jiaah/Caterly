@@ -134,7 +134,7 @@ importers:
     dependencies:
       '@cately/design':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/design
       '@caterly/tailwind-config':
         specifier: workspace:*
         version: link:../../tools/tailwind
@@ -145,7 +145,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/web
 
-  packages/ui:
+  packages/design:
     dependencies:
       '@caterly/tailwind-config':
         specifier: workspace:*
@@ -191,7 +191,7 @@ importers:
     dependencies:
       '@cately/design':
         specifier: workspace:*
-        version: link:../ui
+        version: link:../design
       '@caterly/tailwind-config':
         specifier: workspace:*
         version: link:../../tools/tailwind

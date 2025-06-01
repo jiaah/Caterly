@@ -5,5 +5,5 @@
 @import '@caterly/tailwind-config/styles.css';
 
 /* @source로 외부 패키지의 클래스 추출용 경로만 등록 (실제 CSS는 번들에 포함되지 않음) */
-@source '../../../../../packages/ui';
+@source '../../../../../packages/design';
 @source '../../../../../packages/web';
