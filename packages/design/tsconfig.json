@@ -4,6 +4,9 @@
 		"outDir": "dist",
 		"rootDir": "src",
 		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		},
 		"noEmit": false,
 		"allowImportingTsExtensions": false,
 		"declaration": true,
