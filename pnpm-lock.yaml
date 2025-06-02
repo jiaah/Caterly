@@ -132,7 +132,7 @@ importers:
 
   apps/admin:
     dependencies:
-      '@cately/design':
+      '@caterly/design':
         specifier: workspace:*
         version: link:../../packages/design
       '@caterly/tailwind-config':
@@ -189,7 +189,7 @@ importers:
 
   packages/web:
     dependencies:
-      '@cately/design':
+      '@caterly/design':
         specifier: workspace:*
         version: link:../design
       '@caterly/tailwind-config':

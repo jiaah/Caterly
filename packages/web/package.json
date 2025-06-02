@@ -33,7 +33,7 @@
 		"check-types": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@cately/design": "workspace:*",
+		"@caterly/design": "workspace:*",
 		"@caterly/tailwind-config": "workspace:*"
 	},
 	"devDependencies": {}

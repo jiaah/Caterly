@@ -1,5 +1,5 @@
 {
-	"name": "@cately/design",
+	"name": "@caterly/design",
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
@@ -29,7 +29,6 @@
 		"lint": "eslint . --max-warnings 0",
 		"prettier": "prettier --write .",
 		"clean": "rimraf dist node_modules .turbo tsconfig.tsbuildinfo || true",
-		"generate:component": "turbo gen react-component",
 		"check-types": "tsc --noEmit"
 	},
 	"peerDependencies": {
