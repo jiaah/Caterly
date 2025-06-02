@@ -29,6 +29,7 @@
 		"lint": "eslint . --max-warnings 0",
 		"prettier": "prettier --write .",
 		"clean": "rimraf dist node_modules .turbo tsconfig.tsbuildinfo || true",
+		"shadcn:add": "pnpm dlx shadcn@latest add",
 		"check-types": "tsc --noEmit"
 	},
 	"peerDependencies": {
@@ -44,6 +45,7 @@
 		"@caterly/utils": "workspace:*",
 		"@radix-ui/react-slot": "^1.2.3",
 		"class-variance-authority": "^0.7.1",
+		"embla-carousel-react": "^8.6.0",
 		"lucide-react": "^0.511.0"
 	},
 	"devDependencies": {

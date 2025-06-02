@@ -15,6 +15,7 @@
 		"lint-staged": "lint-staged",
 		"check-types": "turbo run check-types",
 		"clean": "pnpm -r run clean && pnpm -r exec rimraf .turbo || true",
+		"shadcn:add": "pnpm --filter=@caterly/design run shadcn:add",
 		"prepare": "husky"
 	},
 	"lint-staged": {
