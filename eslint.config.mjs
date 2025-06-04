@@ -114,22 +114,19 @@ export default [
 				{
 					groups: [
 						['builtin', 'external'],
-						['internal'],
+						'internal',
 						['parent', 'sibling', 'index'],
-						['object'],
-						['type'],
+						'object',
+						'type',
 					],
 					pathGroups: [
-						{ pattern: 'react', group: 'builtin', position: 'before' },
-						{ pattern: 'react-*', group: 'builtin', position: 'before' },
-						{ pattern: '@caterly/*', group: 'external', position: 'before' },
 						{
-							pattern: './styles/**/*.css',
+							pattern: '{react,react-router-dom}',
 							group: 'external',
-							position: 'after',
+							position: 'before',
 						},
-						{ pattern: '@/**', group: 'internal', position: 'before' },
 					],
+					pathGroupsExcludedImportTypes: [],
 					'newlines-between': 'always',
 					alphabetize: {
 						order: 'asc',
