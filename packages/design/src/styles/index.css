@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@custom-variant dark (&:is(.dark *));
+@import 'tw-animate-css';
 @import '@caterly/tailwind-config/styles.css';
-@import "tw-animate-css";
-
+@custom-variant dark (&:is(.dark *));
