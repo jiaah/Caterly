@@ -1,44 +1,46 @@
-import js from '@eslint/js';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import eslintConfigPrettier from 'eslint-config-prettier';
-import pluginImport from 'eslint-plugin-import';
-import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
-import pluginPrettier from 'eslint-plugin-prettier';
-import pluginReact from 'eslint-plugin-react';
-import pluginReactHooks from 'eslint-plugin-react-hooks';
-import pluginTurbo from 'eslint-plugin-turbo';
+import eslint from '@eslint/js';
+import importPlugin from 'eslint-plugin-import';
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+import prettierPluginRecommended from 'eslint-plugin-prettier/recommended';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import turboPlugin from 'eslint-plugin-turbo';
 import globals from 'globals';
+import tseslint, {
+	configs as tseslintConfigs,
+	parser as tseslintParser,
+} from 'typescript-eslint';
 
-export default [
-	js.configs.recommended,
+export default tseslint.config(
 	{
-		ignores: ['**/*.config.{js,ts}'],
+		ignores: ['**/dist/**'],
 	},
-
-	// JavaScript 파일 설정
 	{
-		files: ['**/*.{js,jsx,mjs,cjs}'],
-		languageOptions: {
-			ecmaVersion: 'latest',
-			sourceType: 'module',
-			parserOptions: {
-				ecmaFeatures: { jsx: true },
-			},
-		},
-	},
-
-	// TypeScript 파일 설정
-	{
-		files: ['**/*.{ts,tsx}'],
-		languageOptions: {
-			parser: tsParser,
-			parserOptions: {
-				ecmaFeatures: { jsx: true },
-			},
-		},
+		files: ['**/*.{js,mjs,cjs,jsx,ts,tsx}'],
+		extends: [
+			eslint.configs.recommended,
+			tseslintConfigs.recommendedTypeChecked,
+			tseslintConfigs.stylisticTypeChecked,
+			importPlugin.flatConfigs.recommended,
+			importPlugin.flatConfigs.typescript,
+			reactPlugin.configs.flat.recommended,
+			jsxA11yPlugin.flatConfigs.recommended,
+			reactPlugin.configs.flat['jsx-runtime'],
+			reactHooksPlugin.configs['recommended-latest'],
+			prettierPluginRecommended,
+		],
 		plugins: {
-			'@typescript-eslint': tseslint,
+			turbo: turboPlugin,
+		},
+		languageOptions: {
+			parser: tseslintParser,
+			parserOptions: {
+				ecmaFeatures: { jsx: true },
+				project: ['./tsconfig.json'],
+			},
+			globals: {
+				...globals.browser,
+			},
 		},
 		settings: {
 			react: {
@@ -55,6 +57,20 @@ export default [
 			},
 		},
 		rules: {
+			// General
+			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+			'no-console': ['warn', { allow: ['warn', 'error'] }],
+			'no-debugger': 'error',
+			'consistent-return': 'error',
+			curly: ['error', 'all'],
+			eqeqeq: ['error', 'always'],
+			'no-else-return': 'error',
+			'no-empty': ['error', { allowEmptyCatch: true }],
+			'no-var': 'error',
+			'prefer-const': 'error',
+			'no-duplicate-imports': 'error',
+
+			// TypeScript
 			'@typescript-eslint/explicit-module-boundary-types': 'off',
 			'@typescript-eslint/no-explicit-any': 'warn',
 			'@typescript-eslint/no-unused-vars': [
@@ -69,44 +85,6 @@ export default [
 			'@typescript-eslint/no-misused-promises': 'error',
 			'@typescript-eslint/prefer-nullish-coalescing': 'warn',
 			'@typescript-eslint/prefer-optional-chain': 'warn',
-		},
-	},
-
-	// 공통 설정 (JS/TS)
-	{
-		files: ['**/*.{js,jsx,ts,tsx}'],
-		languageOptions: {
-			globals: {
-				...globals.browser,
-				...globals.es2021,
-			},
-		},
-		plugins: {
-			turbo: pluginTurbo,
-			import: pluginImport,
-			prettier: pluginPrettier,
-			react: pluginReact,
-			'react-hooks': pluginReactHooks,
-			'jsx-a11y': pluginJsxA11y,
-		},
-		settings: {
-			react: {
-				version: 'detect',
-			},
-		},
-		rules: {
-			// General
-			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-			'no-console': ['warn', { allow: ['warn', 'error'] }],
-			'no-debugger': 'error',
-			'consistent-return': 'error',
-			curly: ['error', 'all'],
-			eqeqeq: ['error', 'always'],
-			'no-else-return': 'error',
-			'no-empty': ['error', { allowEmptyCatch: true }],
-			'no-var': 'error',
-			'prefer-const': 'error',
-			'no-duplicate-imports': 'error',
 
 			// Import
 			'import/order': [
@@ -172,12 +150,9 @@ export default [
 			'turbo/no-undeclared-env-vars': 'error',
 		},
 	},
-	// 빌드 산출물 무시
+	// JavaScript 파일 설정
 	{
-		ignores: ['*-dist/**'],
+		files: ['**/*.{js,jsx,mjs,cjs}'],
+		extends: [tseslintConfigs.disableTypeChecked],
 	},
-	// 항상 마지막에 위치
-	{
-		...eslintConfigPrettier,
-	},
-];
+);
