@@ -11,10 +11,11 @@ export default {
 			'always',
 			[
 				'admin',
+				'assets',
 				'design',
+				'tailwind',
 				'utils',
 				'web',
-				'tailwind',
 				'', // empty scope for global changes
 			],
 		],
