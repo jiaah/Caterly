@@ -8,7 +8,7 @@ export function Header() {
 			<div className="flex items-center justify-between">
 				<Link
 					to="/"
-					className="block w-[175px] md:w-[200px] lg:w-[220px] h-auto"
+					className="block w-[140px] md:w-[175px] lg:w-[200px] h-auto"
 					aria-label="Go to home page"
 				>
 					<img
@@ -19,7 +19,7 @@ export function Header() {
 				</Link>
 				<Button
 					variant="ghost"
-					className="text-lg md:text-xl lg:text-2xl md:px-6 lg:px-8"
+					className="text-lg md:text-xl lg:text-2xl mr-[-16px]"
 					aria-label="Go to login page"
 					asChild
 				>
