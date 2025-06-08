@@ -1,2 +1,4 @@
 import './app/styles/index.css';
-export { WebHomePage } from './pages/home/index';
+export { Home } from './components/home/index';
+export { Footer } from './components/layout/Footer';
+export { Header } from './components/layout/Header';
