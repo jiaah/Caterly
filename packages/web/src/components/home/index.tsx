@@ -1,9 +1,24 @@
-import { Hero } from './Hero';
+import { Feature } from './Feature';
+import { HeroContent } from './HeroContent';
+import { HeroImage } from './HeroImage';
+import { HeroSlider } from './HeroSlider';
 
-export function Home() {
+import { Header } from '../layout/Header';
+
+export const Home = () => {
 	return (
 		<>
-			<Hero />
+			<div className="relative h-[100vh] w-full">
+				<HeroImage />
+				<HeroSlider>
+					{({ currentIndex }) => <HeroContent currentIndex={currentIndex} />}
+				</HeroSlider>
+				<div className="absolute top-0 left-0 w-full">
+					<Header />
+				</div>
+			</div>
+
+			<Feature />
 		</>
 	);
-}
+};

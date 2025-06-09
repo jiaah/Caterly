@@ -1,7 +1,10 @@
 import clsx from 'clsx';
 
-const HERO_POINT_COLOR = '#F8B37D';
-const HERO_POINT_CLASS = `text-[${HERO_POINT_COLOR}] drop-shadow`;
+import { HERO_POINT_CLASS, HERO_POINT_COLOR } from './hero.styles';
+
+const YUCHUNG_INFORMATION = {
+	phone: '+82-54-745-0999',
+};
 
 export const HERO_CONTENT = [
 	{
@@ -35,7 +38,7 @@ export const HERO_CONTENT = [
 				<p className="text-base">*경주 전지역 배달</p>
 				<a
 					role="button"
-					href={`tel:+82-54-745-0999`}
+					href={`tel:${YUCHUNG_INFORMATION.phone}`}
 					className={clsx(
 						`self-start border border-[${HERO_POINT_COLOR}] rounded-md px-8 py-2 text-sm font-normal`,
 						HERO_POINT_CLASS,
