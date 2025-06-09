@@ -3,12 +3,13 @@ import { HeroContent } from './HeroContent';
 import { HeroImage } from './HeroImage';
 import { HeroSlider } from './HeroSlider';
 
+import { Footer } from '../layout/Footer';
 import { Header } from '../layout/Header';
 
 export const Home = () => {
 	return (
 		<>
-			<div className="relative h-[100vh] w-full">
+			<div className="relative h-dvh w-full">
 				<HeroImage />
 				<HeroSlider>
 					{({ currentIndex }) => <HeroContent currentIndex={currentIndex} />}
@@ -19,6 +20,7 @@ export const Home = () => {
 			</div>
 
 			<Feature />
+			<Footer />
 		</>
 	);
 };
