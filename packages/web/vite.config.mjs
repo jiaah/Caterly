@@ -5,11 +5,13 @@ import { fileURLToPath } from 'url';
 import { defineConfig, mergeConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
+
 import baseConfig from '../../vite.config.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// eslint-disable-next-line import/no-default-export
 export default defineConfig(
 	mergeConfig(baseConfig, {
 		root: '.',

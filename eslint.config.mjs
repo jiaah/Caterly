@@ -11,6 +11,7 @@ import tseslint, {
 	parser as tseslintParser,
 } from 'typescript-eslint';
 
+// eslint-disable-next-line import/no-default-export
 export default tseslint.config(
 	{
 		ignores: ['**/dist/**'],
@@ -58,7 +59,7 @@ export default tseslint.config(
 		},
 		rules: {
 			// General
-			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+			'no-unused-vars': ['off', { argsIgnorePattern: '^_' }],
 			'no-console': ['warn', { allow: ['warn', 'error'] }],
 			'no-debugger': 'error',
 			'consistent-return': 'error',
@@ -126,7 +127,14 @@ export default tseslint.config(
 				'error',
 				{ button: true, submit: true, reset: true },
 			],
-			'react/function-component-definition': 'error',
+			'react/function-component-definition': [
+				'error',
+				{
+					namedComponents: 'arrow-function',
+					unnamedComponents: 'arrow-function',
+				},
+			],
+			'import/no-default-export': 'error',
 			'react/no-danger': 'warn',
 			'react/jsx-no-constructed-context-values': 'warn',
 
