@@ -11,7 +11,8 @@
 		"vite",
 		"Turborepo",
 		"commitlint",
-		"predev"
+		"predev",
+		"yuchung"
 	],
 	"ignorePaths": ["node_modules/**", "*-dist/**", ".turbo/**"]
 }
